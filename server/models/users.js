@@ -4,32 +4,32 @@ const Schema = mongoose.Schema
 const Users = new Schema({
     name: {
         type: String, 
-        minLength: 2, 
+        // minLength: 2, 
         maxLength:127
     },
     username: {
 		type: String,
 		required: true,
-        minLength: 6,
+        // minLength: 6,
 		unique: true
 	},
     phone:{
         type: String,
         required: true,
-        minLength: 6,
-        match: [/0\d{5,10}$/, 'Please fill a valid phone number']
+        // minLength: 6,
+        // match: [/0\d{5,10}$/, 'Please fill a valid phone number']
     },
 	password: {
 		type: String,
 		required: true
 	},
     birthDay:{
-        type: String
+        type: Date,
     },
     gender: {
 		type: String,
-        enum : ['Male', 'Female'],
-        default: 'Male'
+        // enum : ['Male', 'Female'],
+        // default: 'Male'
 	},
     coach: {
         type:String,

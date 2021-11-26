@@ -5,7 +5,7 @@ import ContentIntro from "../component/Hung/content";
 import ContentHlv from "../component/tung/contentHlv";
 import Footer from "../component/tung/footer";
 // import PostManage from "../component/trang/postManager/Postmanage";
-
+import SC from "../component/trang/SC";
 
 export default function UserPage(){
     return(
@@ -14,6 +14,7 @@ export default function UserPage(){
             <Slider/>
             <ContentIntro/>
             {/* <PostManage/> */}
+            <SC/>
             <ContentHlv/>
             <Footer/>
         </>

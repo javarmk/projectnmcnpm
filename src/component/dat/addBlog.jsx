@@ -32,9 +32,9 @@ export default function AddBlog(props){
             method:'post',
             url:"http://localhost:5000/api/adv",
             data:{
-                creator:'dat',
+                creator:'Admin',
                 title:'Hello world',
-                time:'none',
+                time:'',
                 view:0,
                 picture:'https://www.cfyc.com.vn/images_server/themes/celebration/img/home/cach-giam-can.jpg?v=0.1',
                 content:content,
@@ -44,7 +44,6 @@ export default function AddBlog(props){
         })
     }
 
-
     const [textValue,setTextValue]=useState([props.value,])
 
     const getTextFromHtml=()=>{
@@ -52,6 +51,7 @@ export default function AddBlog(props){
         for(var i=0;i<textValue.length;i++){
             text+=jsxToString(textValue[i])
         }
+        if(text=='') text='<div></div>'
         return text
     }
 
@@ -194,21 +194,17 @@ export default function AddBlog(props){
             <div className="addBlogTitle" style={style.textCenter}>
                 <div>{language.blogPageTitle}</div>
             </div>
-            {
-               
-            }
+    
             <div>
                 <div className="addBlogHeader">
                     <div className='addBlogHeaderTitle' style={{fontFamily:'sans-serif'}} >Preview</div>
-                  
                     <div className="addBlogHeaderContent">
-                        {
-                            textValue
-                        }
-                        </div>
-                        <div className='addButton' onClick={()=>{addnewElementWithIndex(createElement(<div style={{backgroundColor:'rgba(187, 187, 187, 0.541)'}}>...</div>),textValue.length); setShow('block')}}>+</div>
+                    {
+                        textValue
+                    }
                     </div>
-                
+                    <div className='addButton' onClick={()=>{addnewElementWithIndex(createElement(<div style={{backgroundColor:'rgba(187, 187, 187, 0.541)'}}>...</div>),textValue.length); setShow('block')}}>+</div>
+                </div>
             </div>
 
            <div style={{display:show}}>

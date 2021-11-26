@@ -10,8 +10,6 @@ import AdminDefaultTable from "../admindefaulttable/admindefaulttable"
 
 import axios from "axios"
 import { useState,useEffect } from "react"
-// url: localhost:5000/api/users/
-
 
 export default function AdminRegisterAccForUsers(){
 
@@ -32,25 +30,7 @@ export default function AdminRegisterAccForUsers(){
            },
         ]
     )
-    const fetchTasks = async () => {
-        var myHeaders = new Headers();
-        // var accessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkwY2U1NTFjZjdmZWNlYjZjMmNlODYiLCJpYXQiOjE2Mzc4NTMzMzZ9.qWPkAAYnizvz6o1Y2es6uojIxHKsxt2NbI6-AEWu3k0'
-        myHeaders.append("Authorization",localStorage.getItem("accessToken"));
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        const response = await fetch("http://localhost:5000/api/users", requestOptions)
-        const data = await response.json()
-        return data
-    }
     const getDataUser=()=>{
-        var myHeaders = new Headers();
-
-
-
         axios({
             method:'get',
             url:'http://localhost:5000/api/users/',
@@ -72,8 +52,7 @@ export default function AdminRegisterAccForUsers(){
             <div style={AdminContainerStyle}>
                 <AdminTitleHeaderContainer title='Danh sách user'/>
                 <div style={AdminContainerContentStyle}>
-                    <AdminDefaultContentSearchTool name1='Tên người dùng' name2='Thêm người dùng' name3='/#'/>
-
+                    <AdminDefaultContentSearchTool name1='Tên người dùng' name2='Thêm người dùng' name3='http://localhost:3000/admin/adduser'/>
                 </div>
                 <div>
                     <AdminDefaultTable headertable={tableheader} datatable={data}/>

@@ -1,6 +1,7 @@
 import './style.css'
 import { useState } from 'react';
 
+import {Link} from 'react-router-dom'
 
 function Header() {
 
@@ -13,6 +14,17 @@ function Header() {
       }
       else {
         return 'none'
+      }
+    })
+  }
+
+  const closeLoginPanel = () => {
+    setState((state) => {
+      if (state == 'block'){
+        return 'none'
+      }
+      else {
+        return 'block'
       }
     })
   }
@@ -33,26 +45,16 @@ function Header() {
         </div>
 
         <div className = "nav-menu">
-          <a href= "" >
-            Tin tức - dịch vụ
+          <a href= "http://localhost:3000/user/blog">
+            Tin tức & sự kiện
           </a>
         </div>
 
         
-        <div className = "nav-menu-login">
+        <div className = "nav-menu-login" onClick={()=>{
+          showLoginPanel()
+        }}>
           Đăng nhập
-          <ul className="login-menu">
-            <li className="login-user">
-              <button onClick={showLoginPanel} >User</button>
-            </li>
-            <li className="login-user">
-              <a href="/admin" >
-                <button  >Admin</button>
-              </a>
-            </li>
-
-          </ul>
-          
         </div>
 
       </div>
@@ -65,14 +67,17 @@ function Header() {
         <input type="password" placeholder="Enter password" />
         <div className="check">
           <label >    
-            <input  type="checkbox" />
+            <input  type="checkbox"/>
             Remember me
             </label>
         </div>
         <br />
-        <button>
+        <button className="submit-login">
           Log in
-        </button>        
+        </button>
+        <button className="close-panel" onClick={closeLoginPanel} > 
+          Đóng 
+        </button>          
       </div>
       
     </div>           

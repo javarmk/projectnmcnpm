@@ -10,6 +10,15 @@ export default function AdminEditUserForm(props){
     )
     const [arrayToRender,setArrayToRender]=useState(props.data) // data
 
+    const handleInputFieldOnChange=(value,index)=>{
+        var newDataForm=[...dataForm];
+        if(index<0) return;
+        if(index>=newDataForm.length) return;
+        newDataForm[index].value=value;
+        setDataForm(newDataForm)
+        // alert(value)
+    }
+
     const inputField=(title,index)=>{
         return(
             <div>
@@ -17,18 +26,34 @@ export default function AdminEditUserForm(props){
                     {title}
                 </div>
                 <div>
-                    <input type="text" placeholder={title} onChange={(value)=>handleInputFieldOnChange(value,index)}/>
+                    <input type="text" placeholder={title} onChange={(e)=>handleInputFieldOnChange(e.target.value,index)}/>
                 </div>
             </div>
         )
     }
-    const handleInputFieldOnChange=(value,index)=>{
-        const newDataForm=[...dataForm];
-        if(index<0) return;
-        if(index>=newDataForm.length) return;
-        newDataForm[index].value=value;
-        setDataForm(newDataForm)
-    }
+    
+
+    const handleSubmit=()=>{
+        axios({
+            method:'post',
+            url:'http://localhost:5000/api/users/',
+            data:{
+                name:getValueByTitleE('name'),
+                phone:getValueByTitleE('phone'),
+                username:getValueByTitleE('username'),
+                password:getValueByTitleE('password'),
+                paymentDay:getValueByTitleE('paymentDay'),
+                birthDay:getValueByTitleE('birthDay'),
+                gender:getValueByTitleE('gender'),
+                // coach:getValueByTitleE('coach'),
+            }
+        }).then(res=>{
+        }).catch(res=>{
+            console.log(res);
+
+        })
+        alert(getValueByTitleE('name'))
+    } 
 
     const buttonField=(title)=>{
         return(
@@ -45,33 +70,7 @@ export default function AdminEditUserForm(props){
         }
         return '';
     }
-
-      // name:getValueByTitleE('name'),
-                // phone:getValueByTitleE('phone'),
-                // username:getValueByTitleE('username'),
-                // password:getValueByTitleE('password'),
-                // paymentDay:getValueByTitleE('paymentDay'),
-                // birthDay:getValueByTitleE('birthDay'),
-                // gender:getValueByTitleE('gender'),
-                // coach:getValueByTitleE('coach'),
-    const handleSubmit=()=>{
-        axios({
-            method:'post',
-            url:'localhost:5000/api/users/',
-            data:{
-                    name:'',
-                    phone:'',
-                username:'',
-                password:'',
-                paymentDay:'',
-                birthDay:'',
-                    gender:'',
-                    coach:'',
-            }
-        }).then(res=>{
-            console.log(res);
-        })
-    }    
+       
     return(
         <div>
             <div>
@@ -87,69 +86,6 @@ export default function AdminEditUserForm(props){
                     })
                 }
             </div>
-
-            {/* <div>
-                <div>
-                    Tài khoản
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    Mật khẩu
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    Họ và tên
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    Số điện thoại
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    Ngày sinh
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    Hạn đóng phí
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    Giới tính
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    Chiều cao
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    Cân nặng
-                </div>
-                <div>
-                    <input type="text" />
-                </div>
-                <div>
-                    <button>
-                        Submit
-                    </button>
-                </div>
-            </div> */}
-
         </div>
     )
 }

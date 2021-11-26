@@ -175,6 +175,7 @@
     margin-left: 10px;
     /* display: flex; */
     position: relative;
+    color: rgba(255, 255, 255, 0.74);
 }
 .admin-nav .admin-choice .admin-choice-container .admin-choice-child-container .admin-choice-container-child .admin-choice-container-child-name div{
     bottom: 0;

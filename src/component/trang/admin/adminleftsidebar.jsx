@@ -2,7 +2,7 @@ import { useState } from "react"
 import './adminleftsidebarstyle.css'
 import { useEffect } from "react"
 import React from "react"
-
+import { Link } from "react-router-dom"
 import { useContext } from "react";
 
 // import { UserContext } from "../../../routes/adminBlogListPage";
@@ -37,7 +37,6 @@ export default function AdminLeftSidebar(){
                     {
                         icon:'https://cdn-icons.flaticon.com/png/128/3172/premium/3172961.png?token=exp=1637681283~hmac=f19f42faf98470289e047b99b3f4f0e5',
                         name:'Quản lý tài khoản',
-                        
                     },
                 ],
             
@@ -213,8 +212,14 @@ export default function AdminLeftSidebar(){
                                 <div className='admin-choice-child-container' style={{display:displayChild[index]}} >
                                 {
                                     element.childChoices.map((element,index)=>{
+                                        var linkTo='#'
+                                        if(element.name=='Quản lý tài khoản')
+                                            linkTo='/admin/registeraccforuser';
+                                        if(element.name=='Danh sách bài viết')
+                                            linkTo='/admin/bloglist';
+                                       
                                         return(
-                                            <a>
+                                            <Link to={linkTo}>
                                                 <div className='admin-choice-container-child'>
                                                     <div className='admin-choice-container-child-icon'>
                                                         <img src={element.icon} alt="" />
@@ -223,8 +228,8 @@ export default function AdminLeftSidebar(){
                                                         <div>{element.name}</div>
                                                     </div>
                                                 </div>
-                                            </a>
-                                            
+                                            </Link>
+                                        
                                         )
                                     })
                                 }

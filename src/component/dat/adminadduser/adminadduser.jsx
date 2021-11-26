@@ -71,26 +71,27 @@ export default function AdminAddUser(){
             type:'inputField',
             value:''
         },
-        {
-            title:"Chiều cao",
-            titleE:'height',
-            type:'inputField',
-            value:''
-        },
-        {
-            title:"Huan luyen vien",
-            titleE:'coach',
-            type:'inputField',
-            value:''
-        },
-        {
-            title:"Cân nặng",
-            titleE:'weight',
-            type:'inputField',
-            value:''
-        },
+        // {
+        //     title:"Chiều cao",
+        //     titleE:'height',
+        //     type:'inputField',
+        //     value:''
+        // },
+        // {
+        //     title:"Huan luyen vien",
+        //     titleE:'coach',
+        //     type:'inputField',
+        //     value:''
+        // },
+        // {
+        //     title:"Cân nặng",
+        //     titleE:'weight',
+        //     type:'inputField',
+        //     value:''
+        // },
         {
             title:"submit",
+            titleE:'weight',
             type:'buttonField',
             value:''
         },

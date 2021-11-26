@@ -80,8 +80,11 @@ export default function ContentHlv(){
                                     <br/>
                                     <ul>
                                     {
+                                        
                                         element.des.map((element1,index1)=>{
+                                        
                                             return (
+                                                
                                                 <li key={index1} style={{textAlign:''}}>{element1}</li>
                                             )
                                         })
